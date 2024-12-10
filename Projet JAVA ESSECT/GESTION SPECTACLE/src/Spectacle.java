@@ -7,6 +7,8 @@ public class Spectacle {
     private Date date;
     private String type;
     private Duration duree;
+    private final int MAX=10;
+    private Diffusion[]diffusions=new Diffusion[MAX];
 
     public Spectacle(int idSpectacle, String titre, Date date, String type, Duration duree) {
         this.idSpectacle = idSpectacle;

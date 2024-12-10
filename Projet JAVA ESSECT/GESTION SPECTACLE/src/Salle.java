@@ -1,17 +1,12 @@
 public class Salle {
-    private int idSalle;
     private int numSalle;
     private int capacite;
 
-    public Salle(int idSalle, int numSalle, int capacite) {
-        this.idSalle = idSalle;
+    public Salle( int numSalle, int capacite) {
         this.numSalle = numSalle;
         this.capacite = capacite;
     }
 
-    public int getIdSalle() {
-        return idSalle;
-    }
 
     public int getNumSalle() {
         return numSalle;
