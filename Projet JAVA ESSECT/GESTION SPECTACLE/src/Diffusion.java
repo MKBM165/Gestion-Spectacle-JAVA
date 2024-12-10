@@ -67,7 +67,7 @@ public class Diffusion {
     public int getBilletsReserver() {
         return billetsReserver;
     }
-    public void afficherDiffusion(){
+    public void afficher(){
         //idSpectacle.afficher()
         //idSalle.afficher()
         System.out.println("-------- le :"+dateDiff+"--------");

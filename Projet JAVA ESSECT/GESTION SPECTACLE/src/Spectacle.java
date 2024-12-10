@@ -4,13 +4,13 @@ import java.util.Date;
 public class Spectacle {
     private int idSpectacle;
     private String titre;
-    private Date date;
+    private String date;
     private String type;
-    private Duration duree;
+    private int duree;//par minute
     private final int MAX=10;
     private Diffusion[]diffusions=new Diffusion[MAX];
 
-    public Spectacle(int idSpectacle, String titre, Date date, String type, Duration duree) {
+    public Spectacle(int idSpectacle, String titre, String date, String type, int duree) {
         this.idSpectacle = idSpectacle;
         this.titre = titre;
         this.date = date;
@@ -30,11 +30,11 @@ public class Spectacle {
         this.titre = titre;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -46,11 +46,11 @@ public class Spectacle {
         this.type = type;
     }
 
-    public Duration getDuree() {
+    public int getDuree() {
         return duree;
     }
 
-    public void setDuree(Duration duree) {
+    public void setDuree(int duree) {
         this.duree = duree;
     }
 
