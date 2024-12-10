@@ -5,12 +5,12 @@ public class Diffusion {
     private Date dateDiff;
     private String heureDebut;
     private String heureFin;
-    private int idSpectacle;
-    private int idSalle;
+    private Spectacle idSpectacle;
+    private Salle idSalle;
     private int nbrMaxBillets;
     private int billetsReserver;
 
-    public Diffusion(int idDiffusion, Date dateDiff, String heureDebut, int idSpectacle, int idSalle) {
+    public Diffusion(int idDiffusion, Date dateDiff, String heureDebut, Spectacle idSpectacle, Salle idSalle ) {
         this.idDiffusion = idDiffusion;
         this.dateDiff = dateDiff;
         this.heureDebut = heureDebut;
@@ -40,11 +40,11 @@ public class Diffusion {
         return idDiffusion;
     }
 
-    public int getIdSpectacle() {
+    public Spectacle getIdSpectacle() {
         return idSpectacle;
     }
 
-    public int getIdSalle() {
+    public Salle getIdSalle() {
         return idSalle;
     }
 
