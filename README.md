@@ -32,3 +32,14 @@ The **Spectacle Management System** is designed to simulate the management of sp
 1. Clone the repository:
    ```bash
    git clone https://github.com/MKBM165/Gestion-Spectacle-JAVA.git
+
+## 📝 Disclaimer
+
+This project is intended **for educational purposes only** as part of the learning process at **ESSECT**. 
+## 📧 Contact
+
+If you have any questions or feedback regarding this project, feel free to reach out:
+
+- **Email:** mohamedkhalilbenmrad@gmail.com  
+- **GitHub:** [MKBM165](https://github.com/yourusername)
+
