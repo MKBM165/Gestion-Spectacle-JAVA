@@ -1,6 +1,6 @@
 # Spectacle Management System
 
-This is a **Java-based project** developed as part of the learning curriculum at **ESSECT**. The project demonstrates core Java principles and practical implementation of Object-Oriented Programming (OOP) concepts in managing spectacles.
+This is a **Java-based project** developed as part of the learning process at **ESSECT**. The project demonstrates core Java principles and practical implementation of Object-Oriented Programming (OOP) concepts in managing spectacles.
 
 ---
 
