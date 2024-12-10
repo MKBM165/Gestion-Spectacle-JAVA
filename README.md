@@ -31,4 +31,4 @@ The **Spectacle Management System** is designed to simulate the management of sp
 ## ⚡ Getting Started
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/spectacle-management-system.git
+   git clone https://github.com/MKBM165/Gestion-Spectacle-JAVA.git
