@@ -16,5 +16,7 @@ public class Client extends Utilisateur{
         System.out.println("----Entrer votre Choix : ");
         return input.nextInt();
     }
+    public int choixSpectacleMultiple(){
 
+    }
 }

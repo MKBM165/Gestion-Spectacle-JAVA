@@ -1,8 +1,6 @@
-import java.util.Date;
-
 public class Diffusion {
     private int idDiffusion;
-    private Date dateDiff;
+    private String dateDiff;
     private String heureDebut;
     private String heureFin;
     private Spectacle idSpectacle;
@@ -10,7 +8,7 @@ public class Diffusion {
     private int nbrMaxBillets;
     private int billetsReserver;
 
-    public Diffusion(int idDiffusion, Date dateDiff, String heureDebut, Spectacle idSpectacle, Salle idSalle ) {
+    public Diffusion(int idDiffusion, String dateDiff, String heureDebut, Spectacle idSpectacle, Salle idSalle,Planning p) {
         this.idDiffusion = idDiffusion;
         this.dateDiff = dateDiff;
         this.heureDebut = heureDebut;
@@ -18,6 +16,8 @@ public class Diffusion {
         this.idSalle = idSalle;
         //heureFin = heureDebut+idSpectacle.getduree() à verifier et modifier
         //nbrMaxBillets=idSalle.getcacite()
+        idSpectacle.setDiffusions(this);
+        p.ajoutdiff(this);
     }
 
     public void setHeureDebut(String heureDebut) {
@@ -28,7 +28,7 @@ public class Diffusion {
         this.heureFin = heureFin;
     }
 
-    public void setDateDiff(Date dateDiff) {
+    public void setDateDiff(String dateDiff) {
         this.dateDiff = dateDiff;
     }
 
@@ -48,7 +48,7 @@ public class Diffusion {
         return idSalle;
     }
 
-    public Date getDateDiff() {
+    public String getDateDiff() {
         return dateDiff;
     }
 
@@ -70,8 +70,10 @@ public class Diffusion {
     public void afficher(){
         //idSpectacle.afficher()
         //idSalle.afficher()
+        System.out.println("******************************************");
         System.out.println("-------- le :"+dateDiff+"--------");
         System.out.println("Du : "+heureDebut+" jusqu'à : "+heureFin);
         System.out.println("Nbr de place : "+nbrMaxBillets);
+        System.out.println("******************************************");
     }
 }

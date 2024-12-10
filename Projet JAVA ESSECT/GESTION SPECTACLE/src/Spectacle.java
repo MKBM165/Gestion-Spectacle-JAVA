@@ -8,14 +8,16 @@ public class Spectacle {
     private String type;
     private int duree;//par minute
     private final int MAX=10;
+    private int i=0;
     private Diffusion[]diffusions=new Diffusion[MAX];
 
-    public Spectacle(int idSpectacle, String titre, String date, String type, int duree) {
+    public Spectacle(int idSpectacle, String titre, String date, String type, int duree,Planning p) {
         this.idSpectacle = idSpectacle;
         this.titre = titre;
         this.date = date;
         this.type = type;
         this.duree = duree;
+        p.ajoutspectacle(this);
     }
 
     public int getIdSpectacle() {
@@ -57,5 +59,16 @@ public class Spectacle {
     public void afficher(){
         System.out.println("--------- "+titre+" ---------");
         System.out.println("Date à partir de : "+date+"--------- Duree : "+duree);
+    }
+
+    public void setDiffusions(Diffusion diff) {
+        diffusions[i]=diff;
+        i++;
+    }
+    public void afficherDiffusions(){
+        System.out.println("-----------Voi ci les Horaires de "+titre+"------------");
+        for (Diffusion dif : diffusions){
+            dif.afficher();
+        }
     }
 }
