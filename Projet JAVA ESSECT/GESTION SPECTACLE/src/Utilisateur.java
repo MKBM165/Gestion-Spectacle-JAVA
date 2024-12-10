@@ -2,7 +2,8 @@ public class Utilisateur {
     private int id;
     private String nom;
     private String motDePasse;
-
+    private Gestionnaire[] tabgestionaire= new Gestionnaire[10];
+    private Client[] tabclients= new Client[10];
     public void setId(int id)
     {
         this.id=id;
