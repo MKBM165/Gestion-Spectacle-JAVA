@@ -23,7 +23,7 @@ The **Spectacle Management System** is designed to simulate the management of sp
 
 ## 🛠️ Technologies Used
 - **Programming Language:** Java
-- **IDE:** [Your preferred IDE, e.g., IntelliJ IDEA, Eclipse, etc.]
+- **IDE:** IntelliJ IDEA
 - **Version Control:** Git & GitHub
 
 ---
