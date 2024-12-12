@@ -1,5 +1,6 @@
 import java.time.Duration;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Spectacle {
     private int idSpectacle;
@@ -65,11 +66,20 @@ public class Spectacle {
         diffusions[nbdiff]=diff;
         nbdiff++;
     }
-    public void afficherDiffusions(){
+    public int afficherDiffusions(){
+        Scanner input =new Scanner(System.in);
+        int choix;
+        System.out.println("0 : retour au menu principal");
         System.out.println("-----------Voi ci les Horaires de "+titre+"------------");
         for (int j = 0; j <nbdiff ; j++) {
             System.out.println((j+1)+ " : ");
             diffusions[j].afficher();
         }
+        System.out.println("Entrer votre Choix : ");
+        choix = input.nextInt();
+        if (choix>0 && choix<nbdiff+1){
+            diffusions[choix-1].vendreBiller();
+        }
+        return 0;
     }
 }

@@ -29,7 +29,7 @@ public class Planning {
             diffusions[i].afficher();
         }
     }
-    public void affichespectacle(){
+    public int affichespectacle(){
         Scanner input = new Scanner(System.in);
         int choix;
         System.out.println("0 : retour au menu principal");
@@ -40,13 +40,9 @@ public class Planning {
         System.out.println("Entrer votre Choix : ");
         choix = input.nextInt();
         //case choix du spectacle :
-         if (choix < nbspec && choix >0 ){
-            System.out.println("0 : retour au menu principal");
+         if (choix < nbspec+1 && choix >0 ){
              spectacles[choix-1].afficherDiffusions();
-             System.out.println("Entrer votre Choix : ");
-             choix = input.nextInt();
-
         }
-            //case retour
+         return 0 ;
     }
 }
