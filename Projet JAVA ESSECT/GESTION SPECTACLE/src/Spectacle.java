@@ -72,4 +72,8 @@ public class Spectacle {
             diffusions[j].afficher();
         }
     }
+    @Override
+    public String toString() {
+        return "ID: " + idSpectacle+ ", Titre: " + titre + ", Date: " + date + ", Type: " + type + ", Durée: " + duree + " minutes";
+    }
 }

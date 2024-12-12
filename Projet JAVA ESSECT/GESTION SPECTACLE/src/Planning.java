@@ -1,20 +1,34 @@
 import java.util.Scanner;
 
 public class Planning {
-    private Diffusion[]diffusions=new Diffusion[100];
-    private int nbdiff=0;
-    private Spectacle[]spectacles=new Spectacle[100];
-    private int nbspec=0;
+    private Diffusion[] diffusions = new Diffusion[100];
+    private int nbdiff = 0;
+    private Spectacle[] spectacles = new Spectacle[100];
+    private int nbspec = 0;
 
-    public void ajoutdiff(Diffusion d){
-        if(nbdiff<100){
-            diffusions[nbdiff]=d;
+    public void ajoutdiff(Diffusion d) {
+        if (nbdiff < 100) {
+            diffusions[nbdiff] = d;
             nbdiff++;
-        }
-        else {
+        } else {
             System.out.println("Planning saturée");
         }
     }
+
+    public void supprimerDiffusion(int indice) {
+        if (indice >= 0 && indice < nbdiff) {
+            for (int i=indice;i<nbdiff-1;i++) {
+                diffusions[i]=diffusions[i+1];
+            }
+            diffusions[nbdiff - 1] = null;
+            nbdiff--;
+            System.out.println("Diffusion supprimée !");
+        } else {
+            System.out.println("Indice invalide");
+        }
+    }
+
+
     public void ajoutspectacle(Spectacle s){
         if(nbspec<100){
             spectacles[nbspec]=s;
@@ -48,5 +62,43 @@ public class Planning {
 
         }
             //case retour
+    }
+    public void afficherSpectacle(){
+        for (int i = 0; i < nbspec; i++) {
+            System.out.println(spectacles[i]);
+        }
+    }
+    public void afficherSpectacle(int i) {
+        if (i >= 0 && i < nbspec) {
+            System.out.println(spectacles[i]);
+        } else {
+            System.out.println("Index invalide pour l'affichage du spectacle.");
+        }
+    }
+
+    public Spectacle getSpectacle(int indice){
+        return spectacles[indice];
+    }
+    public int getNombreSpectacles()
+    {
+        return nbspec;
+    }
+    public void supprimerSpectacle(int indice){
+        if(indice>=0 && indice<nbspec)
+        {
+            for(int i=indice;i<nbspec;i++)
+            {
+                spectacles[i]=spectacles[i+1];
+            }
+            spectacles[indice-1]=null;
+            nbspec--;
+            System.out.println("Spectacle supprimé!");
+        }
+        else System.out.println("Indice invalide");
+    }
+
+    public void ajouterDiffusion()
+    {
+
     }
 }
