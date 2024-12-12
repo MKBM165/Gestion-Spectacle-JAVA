@@ -7,14 +7,14 @@ public class Main {
      //base de donnes locale
         //declaration pour l authentification
 
-        Client c1=new Client(2,"Client1","mdpclient1");
-        Client c2=new Client(3,"Client2","mdpclient2");
-        Gestionnaire g1=new Gestionnaire(4,"Gest1","Gestionnaire1");
-        Gestionnaire g2=new Gestionnaire(5,"Gest2","Gestionnaire2");
+        Client c1=new Client("Client1","mdpclient1");
+        Client c2=new Client("Client2","mdpclient2");
+        Gestionnaire g1=new Gestionnaire("Gest1","Gestionnaire1");
+        Gestionnaire g2=new Gestionnaire("Gest2","Gestionnaire2");
         Utilisateur[] tutilisateurs = {c1,c2,g1,g2};
         String inputnom;
         String inputmdp;
-        //****************
+
         //declaration planning
         Planning plan = new Planning();
         //declaration des Salle
@@ -39,15 +39,17 @@ public class Main {
         }while (authentification(tutilisateurs,inputnom,inputmdp)==null);
         Utilisateur user =authentification(tutilisateurs,inputnom,inputmdp);
         if (user instanceof Client){
-            switch (((Client) user).ChoixSpectacles()){
-                case 1 :plan.affichespectacle();//A continuer scenario
-                case 2:
+            Client c = (Client) user;
+            switch (c.ChoixSpectacles()){
+                case 1 ->{
+                    plan.affichespectacle();
+                }//A continuer scenario
+                case 2->
                     System.out.println("exit");//A faire
-                default:
-                    System.out.println("reponse invalid");
         }
         }
     }
+
     public static Utilisateur authentification(Utilisateur[] tutils,String inputnom , String inputmdp){
         int i=0;
         while(i<tutils.length){

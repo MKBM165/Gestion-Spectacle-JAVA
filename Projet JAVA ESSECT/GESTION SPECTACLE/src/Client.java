@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class Client extends Utilisateur{
 
-    public Client(int id,String nom,String mdp) {
-        super.setnom(nom);
-        super.setMotDePasse(mdp);
-        super.setId(id);
+
+    public Client(String nom, String motDePasse) {
+        super(nom, motDePasse);
     }
+
     public int ChoixSpectacles(){
         Scanner input = new Scanner(System.in);
         System.out.println("*********************************");
@@ -15,8 +15,5 @@ public class Client extends Utilisateur{
         System.out.println("*********************************");
         System.out.println("----Entrer votre Choix : ");
         return input.nextInt();
-    }
-    public int choixSpectacleMultiple(){
-
     }
 }

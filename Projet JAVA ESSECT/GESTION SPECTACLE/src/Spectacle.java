@@ -8,7 +8,7 @@ public class Spectacle {
     private String type;
     private int duree;//par minute
     private final int MAX=10;
-    private int i=0;
+    private int nbdiff=0;
     private Diffusion[]diffusions=new Diffusion[MAX];
 
     public Spectacle(int idSpectacle, String titre, String date, String type, int duree,Planning p) {
@@ -62,13 +62,14 @@ public class Spectacle {
     }
 
     public void setDiffusions(Diffusion diff) {
-        diffusions[i]=diff;
-        i++;
+        diffusions[nbdiff]=diff;
+        nbdiff++;
     }
     public void afficherDiffusions(){
         System.out.println("-----------Voi ci les Horaires de "+titre+"------------");
-        for (Diffusion dif : diffusions){
-            dif.afficher();
+        for (int j = 0; j <nbdiff ; j++) {
+            System.out.println((j+1)+ " : ");
+            diffusions[j].afficher();
         }
     }
 }

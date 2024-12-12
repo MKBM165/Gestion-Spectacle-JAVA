@@ -1,13 +1,12 @@
 import java.util.Scanner;
 public class Gestionnaire extends Utilisateur {
     Scanner sc=new Scanner(System.in);
-    public Gestionnaire(int id,String nom,String mdp)
-    {
-        super.setnom(nom);
-        super.setMotDePasse(mdp);
-        super.setId(id);
+
+    public Gestionnaire(String nom, String motDePasse) {
+        super(nom, motDePasse);
     }
-    public void ajoutspectacle()
+
+    public void ajoutspectacle(Planning p)
     {  System.out.println("Donner l'id du spectacle");
         int id= sc.nextInt();
         System.out.println("Donner le titre du spectacle :");
@@ -18,7 +17,7 @@ public class Gestionnaire extends Utilisateur {
         String date=sc.nextLine();
         System.out.println("Donner la duree du spectacle");
         int duration=sc.nextInt();
-Spectacle c=new Spectacle(id,titre,date,type,duration);
+        Spectacle c=new Spectacle(id,titre,date,type,duration,p);
     }
     public void modifiertitre(Spectacle c,String titre)
     {
