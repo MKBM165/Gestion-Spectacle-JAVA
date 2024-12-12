@@ -35,7 +35,7 @@ public class Main {
         inputnom=input.nextLine();
         System.out.println("entrer le mdp : ");
         inputmdp=input.nextLine();
-        System.out.println(authentification(tutilisateurs,inputnom,inputmdp));//return
+        //System.out.println(authentification(tutilisateurs,inputnom,inputmdp));//return
         }while (authentification(tutilisateurs,inputnom,inputmdp)==null);
 
 

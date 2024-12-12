@@ -5,8 +5,9 @@ public class Diffusion {
     private String heureFin;
     private Spectacle idSpectacle;
     private Salle idSalle;
-    private int nbrMaxBillets;
-    private int billetsReserver;
+    private final int nbrMaxBillets ;
+    private int nbrBillets=0;
+    private Billet[] billetsReserver = new Billet[200];
 
     public Diffusion(int idDiffusion, String dateDiff, String heureDebut, Spectacle idSpectacle, Salle idSalle,Planning p) {
         this.idDiffusion = idDiffusion;
@@ -15,7 +16,7 @@ public class Diffusion {
         this.idSpectacle = idSpectacle;
         this.idSalle = idSalle;
         //heureFin = heureDebut+idSpectacle.getduree() à verifier et modifier
-        //nbrMaxBillets=idSalle.getcacite()
+        nbrMaxBillets=idSalle.getCapacite();
         idSpectacle.setDiffusions(this);
         p.ajoutdiff(this);
     }
@@ -33,7 +34,10 @@ public class Diffusion {
     }
 
     public void vendreBiller() {
-        billetsReserver++;
+        Billet billet = new Billet(1000,this,idSalle,idSpectacle);
+        billet.affichebillet();
+        billetsReserver[nbrBillets]=billet;
+        nbrBillets++;
     }
 
     public int getIdDiffusion() {
@@ -65,7 +69,7 @@ public class Diffusion {
     }
 
     public int getBilletsReserver() {
-        return billetsReserver;
+        return billetsReserver.length;
     }
     public void afficher(){
         //idSpectacle.afficher()
