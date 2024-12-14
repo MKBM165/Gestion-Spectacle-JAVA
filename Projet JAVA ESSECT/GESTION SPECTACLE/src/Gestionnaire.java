@@ -26,15 +26,17 @@ public class Gestionnaire extends Utilisateur {
         int choix;
         do {
             System.out.println("*********************************");
+            System.out.println("0 : exit");
             System.out.println("1 : Ajouter un spectacle");
             System.out.println("2 : Modifier un spectacle");
             System.out.println("3 : Afficher spectacles");
             System.out.println("4 : Supprimer un spectacle");
             System.out.println("5 : Afficher diffusion");
             System.out.println("6 : Ajouter / supprimer diffusion");
+            System.out.println("7 : Retour au menu principal (Log In)");
             System.out.print("Entrez votre choix : ");
             choix= sc.nextInt();
-        }while(choix>5||choix<0);
+        }while(choix>7 || choix<0);
         return choix;
     }
     public void modifiertitre(Spectacle c,String titre)

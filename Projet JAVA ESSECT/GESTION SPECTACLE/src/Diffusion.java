@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Diffusion {
     private int idDiffusion;
     private String dateDiff;
@@ -5,7 +7,7 @@ public class Diffusion {
     private String heureFin;
     private Spectacle idSpectacle;
     private Salle idSalle;
-    private final int nbrMaxBillets ;
+    private int nbrMaxBillets ;
     private int nbrBillets=0;
     private Billet[] billetsReserver = new Billet[200];
 
@@ -34,10 +36,28 @@ public class Diffusion {
     }
 
     public void vendreBiller() {
-        Billet billet = new Billet(1000,this,idSalle,idSpectacle);
-        billet.affichebillet();
-        billetsReserver[nbrBillets]=billet;
-        nbrBillets++;
+        Scanner input = new Scanner(System.in);
+        if (nbrBillets<nbrMaxBillets){
+            do {
+            Billet billet = new Billet(1000,this,idSalle,idSpectacle);
+            billet.affichebillet();
+            System.out.println(" 0 : Annuler \n 1 : Confirmer ");
+            if (input.nextInt()==1){
+            billetsReserver[nbrBillets]=billet;
+            nbrBillets++;
+                System.out.println("Merci pour votre Achat Au revoir !");
+                System.out.println("Retour au menu Principal (Log In)..... ");
+            return;
+            }
+            else {
+                return;
+            }
+            }while (input.nextInt() !=0 && input.nextInt() !=1);
+        }
+        else
+        {
+            System.out.println("Nous somme désolé le Film est complé ");
+        }
     }
 
     public int getIdDiffusion() {
@@ -77,7 +97,7 @@ public class Diffusion {
         System.out.println("******************************************");
         System.out.println("-------- le :"+dateDiff+"--------");
         System.out.println("Du : "+heureDebut+" jusqu'à : "+heureFin);
-        System.out.println("Nbr de place : "+nbrMaxBillets);
+        System.out.println("Nbr de place : "+nbrBillets+" / "+nbrMaxBillets);
         System.out.println("******************************************");
     }
 }
