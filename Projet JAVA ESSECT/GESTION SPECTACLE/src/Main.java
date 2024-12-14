@@ -37,6 +37,8 @@ public class Main {
         inputmdp=input.nextLine();
         //System.out.println(authentification(tutilisateurs,inputnom,inputmdp));//return
         }while (authentification(tutilisateurs,inputnom,inputmdp)==null);
+
+
         Utilisateur user =authentification(tutilisateurs,inputnom,inputmdp);
         if (user instanceof Client){
             Client c = (Client) user;
@@ -47,6 +49,30 @@ public class Main {
                 case 2->
                     System.out.println("exit");//A faire
         }
+        }
+
+        //gestionnaire
+        if(user instanceof Gestionnaire){
+            Gestionnaire g=(Gestionnaire)user;
+            switch (g.menugestionnarie()){
+                case 1-> g.ajoutspectacle(plan);
+                case 2-> g.modifierSpectacle(plan);
+                case 3-> plan.afficherSpectacle();
+                case 4->g.supprimerSpectacle(plan);
+                case 5->plan.affichediffusion();
+                case 6->{
+                    System.out.println("1 : Ajouter une diffusion");
+                    System.out.println("2 : Supprimer une diffusion");
+                    System.out.println("Entrez votre choix :");
+                    int choix= input.nextInt();
+                    {
+                        if (choix==1)
+                        {g.ajouterDiffusion(plan);}
+                        else if(choix==2)
+                        {g.supprimerDiffusion(plan);}
+                    }
+                }
+            }
         }
     }
 

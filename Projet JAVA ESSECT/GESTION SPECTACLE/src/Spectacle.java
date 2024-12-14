@@ -82,4 +82,8 @@ public class Spectacle {
         }
         return 0;
     }
+    @Override
+    public String toString() {
+        return "ID: " + idSpectacle+ ", Titre: " + titre + ", Date: " + date + ", Type: " + type + ", Durée: " + duree + " minutes";
+    }
 }
