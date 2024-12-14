@@ -1,10 +1,11 @@
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-
+import java.time.*;
 public class Diffusion {
     private int idDiffusion;
-    private String dateDiff;
-    private String heureDebut;
-    private String heureFin;
+    private LocalDate dateDiff;
+    private LocalTime heureDebut;
+    private LocalTime heureFin;
     private Spectacle idSpectacle;
     private Salle idSalle;
     private int nbrMaxBillets ;
@@ -12,26 +13,33 @@ public class Diffusion {
     private Billet[] billetsReserver = new Billet[200];
 
     public Diffusion(int idDiffusion, String dateDiff, String heureDebut, Spectacle idSpectacle, Salle idSalle,Planning p) {
+        //changer le format de la date
+        DateTimeFormatter dateFormatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        //convertion et affectatton d'un string au format date
+        this.dateDiff = LocalDate.parse(dateDiff,dateFormatter);
         this.idDiffusion = idDiffusion;
-        this.dateDiff = dateDiff;
-        this.heureDebut = heureDebut;
+        //changer le format du temps
+        DateTimeFormatter timeFormatter=DateTimeFormatter.ofPattern("HH:mm");
+        //converstion et affectation d'un string au localtime
+        this.heureDebut = LocalTime.parse(heureDebut,timeFormatter);
         this.idSpectacle = idSpectacle;
         this.idSalle = idSalle;
-        //heureFin = heureDebut+idSpectacle.getduree() à verifier et modifier
+        int duréespectacle=idSpectacle.getDuree();
+        this.heureFin=this.heureDebut.plusMinutes(duréespectacle);
         nbrMaxBillets=idSalle.getCapacite();
         idSpectacle.setDiffusions(this);
         p.ajoutdiff(this);
     }
 
-    public void setHeureDebut(String heureDebut) {
+    public void setHeureDebut(LocalTime heureDebut) {
         this.heureDebut = heureDebut;
     }
 
-    public void setHeureFin(String heureFin) {
+    public void setHeureFin(LocalTime heureFin) {
         this.heureFin = heureFin;
     }
 
-    public void setDateDiff(String dateDiff) {
+    public void setDateDiff(LocalDate dateDiff) {
         this.dateDiff = dateDiff;
     }
 
@@ -72,15 +80,15 @@ public class Diffusion {
         return idSalle;
     }
 
-    public String getDateDiff() {
+    public LocalDate getDateDiff() {
         return dateDiff;
     }
 
-    public String getHeureDebut() {
+    public LocalTime getHeureDebut() {
         return heureDebut;
     }
 
-    public String getHeureFin() {
+    public LocalTime getHeureFin() {
         return heureFin;
     }
 

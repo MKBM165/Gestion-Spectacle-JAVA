@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.time.*;
 public class Gestionnaire extends Utilisateur {
     Scanner sc=new Scanner(System.in);
 
@@ -71,7 +72,6 @@ public class Gestionnaire extends Utilisateur {
         System.out.println("4 : Date");
         System.out.print("Entrez votre choix : ");
         int choix = sc.nextInt();
-        sc.nextLine(); // Clear the buffer
 
         switch (choix) {
             case 1 -> {
@@ -114,7 +114,7 @@ public class Gestionnaire extends Utilisateur {
         System.out.println("Donner l'id de la diffusion :");
         int id_diff= sc.nextInt();
         System.out.println("Donner la date de la diffusion :");
-        String date= sc.nextLine();
+        String date=sc.nextLine();
         System.out.println("Donner l'heure de debut :");
         String heureDebut=sc.nextLine();
         System.out.println("Pour quelle spectacle ? : ");

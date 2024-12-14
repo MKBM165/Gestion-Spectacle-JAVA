@@ -1,5 +1,4 @@
-import java.time.Duration;
-import java.util.Date;
+import java.time.*;
 import java.util.Scanner;
 
 public class Spectacle {
