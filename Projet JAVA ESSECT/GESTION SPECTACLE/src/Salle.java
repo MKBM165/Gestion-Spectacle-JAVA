@@ -2,9 +2,10 @@ public class Salle {
     private int numSalle;
     private int capacite;
 
-    public Salle( int numSalle, int capacite) {
+    public Salle( int numSalle, int capacite,Planning p) {
         this.numSalle = numSalle;
         this.capacite = capacite;
+        p.ajoutSalle(this);
     }
 
 

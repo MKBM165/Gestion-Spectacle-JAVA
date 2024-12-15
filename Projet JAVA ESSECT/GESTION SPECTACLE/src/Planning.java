@@ -5,6 +5,8 @@ public class Planning {
     private int nbdiff = 0;
     private Spectacle[] spectacles = new Spectacle[100];
     private int nbspec = 0;
+    private Salle[] salles = new Salle[100];
+    private int nbsalle =0;
 
     public void ajoutdiff(Diffusion d) {
         if (nbdiff < 100) {
@@ -13,6 +15,23 @@ public class Planning {
         } else {
             System.out.println("Planning saturée");
         }
+    }
+    public void ajoutSalle(Salle salle) {
+        if (nbsalle < 100) {
+            salles[nbsalle] = salle;
+            nbsalle++;
+        } else {
+            System.out.println("Planning saturée");
+        }
+    }
+    public void afficherSalle(){
+        for (int i = 0; i <nbsalle ; i++) {
+            System.out.println((i+1)+" : ");
+            salles[i].afficher();
+        }
+    }
+    public Salle getSalle(int i){
+        return salles[i-1];
     }
 
     public void supprimerDiffusion(int indice) {
@@ -61,7 +80,8 @@ public class Planning {
     }
     public void afficherSpectacle(){
         for (int i = 0; i < nbspec; i++) {
-            System.out.println(spectacles[i]);
+
+            System.out.println((i+1)+" : "+spectacles[i]);
         }
     }
     public void afficherSpectacle(int i) {
@@ -73,7 +93,7 @@ public class Planning {
     }
 
     public Spectacle getSpectacle(int indice){
-        return spectacles[indice];
+        return spectacles[indice-1];
     }
     public int getNombreSpectacles()
     {
@@ -93,8 +113,4 @@ public class Planning {
         else System.out.println("Indice invalide");
     }
 
-    public void ajouterDiffusion()
-    {
-
-    }
 }

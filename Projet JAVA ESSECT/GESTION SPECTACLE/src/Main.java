@@ -3,11 +3,13 @@ import java.time.*;
 public class Main {
     public static void main(String[] args)
     {
+        //problem dans affichage apreès l ajout dun spectacle
         Scanner input=new Scanner(System.in);
         int scenario = 0;
         //quand le scenario = 0 : afficher le menu principal(Log In)
         //quand le scenario = 1 : quitter le programme
         //quand le scenario = 2 : quitter le prograame a cause de l'authentification
+        //quand le scenario = 3 : retour au menu
         //base de donnes locale
         //declaration pour l authentification
 
@@ -22,8 +24,8 @@ public class Main {
         //declaration planning
         Planning plan = new Planning();
         //declaration des Salle
-        Salle salle1 = new Salle(1,100);
-        Salle salle2 = new Salle(2,70);
+        Salle salle1 = new Salle(1,100,plan);
+        Salle salle2 = new Salle(2,70,plan);
         //declaration des Spectacles
         Spectacle s1 =new Spectacle(1,"Venum","12/12/2024","Action",120,plan);
         Spectacle s2 =new Spectacle(2,"The Conjuring","15/11/2024","Horror",90,plan);
@@ -31,7 +33,12 @@ public class Main {
         //declaration des diffusions
         Diffusion d1= new Diffusion(1,"22/12/2024","20:00",s1,salle1,plan);
         Diffusion d2= new Diffusion(2,"22/12/2024","20:00",s3,salle2,plan);
-        Diffusion d3= new Diffusion(1,"20/12/2024","21:00",s2,salle1,plan);
+        Diffusion d3= new Diffusion(3,"20/12/2024","21:00",s2,salle1,plan);
+        Diffusion d4= new Diffusion(4,"30/12/2024","08:00",s3,salle2,plan);
+        Diffusion d5= new Diffusion(5,"20/12/2024","12:00",s1,salle1,plan);
+        Diffusion d6= new Diffusion(6,"20/12/2024","21:00",s3,salle1,plan);
+        Diffusion d7= new Diffusion(7,"20/12/2024","19:00",s2,salle2,plan);
+        Diffusion d8= new Diffusion(8,"20/12/2024","22:00",s2,salle1,plan);
 
         //authentification
         do {
@@ -53,10 +60,12 @@ public class Main {
                 Utilisateur user = authentification(tutilisateurs, inputnom, inputmdp);
                 if (user instanceof Client) {
                     Client c = (Client) user;
+                    do {
+
                     switch (c.ChoixSpectacles()) {
                         case 1 -> {
                             plan.affichespectacle();
-                            scenario = 0;
+                            scenario = 3;
                         }
                         case 0 -> {
                             scenario = 1;
@@ -65,34 +74,39 @@ public class Main {
                             scenario = 0;
                         }
                     }
+                    }while (scenario == 3);
                 }
                 //gestionnaire
                 else if (user instanceof Gestionnaire) {
                     Gestionnaire g = (Gestionnaire) user;
-                    switch (g.menugestionnarie()) {
-                        case 0 -> {
-                            scenario = 1;
-                        }
-                        case 1 -> g.ajoutspectacle(plan);
-                        case 2 -> g.modifierSpectacle(plan);
-                        case 3 -> plan.afficherSpectacle();
-                        case 4 -> g.supprimerSpectacle(plan);
-                        case 5 -> plan.affichediffusion();
-                        case 6 -> {
-                            System.out.println("1 : Ajouter une diffusion");
-                            System.out.println("2 : Supprimer une diffusion");
-                            System.out.println("Entrez votre choix :");
-                            int choix = input.nextInt();
-                            {
-                                if (choix == 1) {
-                                    g.ajouterDiffusion(plan);
-                                } else if (choix == 2) {
-                                    g.supprimerDiffusion(plan);
+                    do {
+                        scenario=3;
+                        switch (g.menugestionnarie()) {
+                            case 0 -> {
+                                scenario = 1;
+                            }
+                            case 1 -> g.ajoutspectacle(plan);
+                            case 2 -> g.modifierSpectacle(plan);
+                            case 3 -> plan.afficherSpectacle();
+                            case 4 -> g.supprimerSpectacle(plan);
+                            case 5 -> plan.affichediffusion();
+                            case 6 -> {
+                                System.out.println("0 : Retourner");
+                                System.out.println("1 : Ajouter une diffusion");
+                                System.out.println("2 : Supprimer une diffusion");
+                                System.out.println("Entrez votre choix :");
+                                int choix = input.nextInt();
+                                {
+                                    if (choix == 1) {
+                                        g.ajouterDiffusion(plan);
+                                    } else if (choix == 2) {
+                                        g.supprimerDiffusion(plan);
+                                    }
                                 }
                             }
+                            case 7 -> scenario = 0;
                         }
-                        case 7 -> scenario = 0;
-                    }
+                    }while (scenario == 3);
                 }
             }
         }while (scenario==0);

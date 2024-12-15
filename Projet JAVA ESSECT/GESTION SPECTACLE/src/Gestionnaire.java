@@ -10,6 +10,7 @@ public class Gestionnaire extends Utilisateur {
     public void ajoutspectacle(Planning p)
     {  System.out.println("Donner l'id du spectacle");
         int id= sc.nextInt();
+        sc.nextLine();
         System.out.println("Donner le titre du spectacle :");
         String titre=sc.nextLine();
         System.out.println("Donner le type de spectale :");
@@ -18,6 +19,7 @@ public class Gestionnaire extends Utilisateur {
         String date=sc.nextLine();
         System.out.println("Donner la duree du spectacle");
         int duration=sc.nextInt();
+        sc.nextLine();
         Spectacle c=new Spectacle(id,titre,date,type,duration,p);
         p.ajoutspectacle(c);
         System.out.println("Spectacle ajouté!");
@@ -72,6 +74,7 @@ public class Gestionnaire extends Utilisateur {
         System.out.println("4 : Date");
         System.out.print("Entrez votre choix : ");
         int choix = sc.nextInt();
+        sc.nextLine();
 
         switch (choix) {
             case 1 -> {
@@ -89,6 +92,7 @@ public class Gestionnaire extends Utilisateur {
             case 3 -> {
                 System.out.print("Donner la nouvelle durée : ");
                 int newDuree = sc.nextInt();
+                sc.nextLine();
                 spectacle.setDuree(newDuree);
                 System.out.println("Durée modifiée avec succès !");
             }
@@ -106,6 +110,7 @@ public class Gestionnaire extends Utilisateur {
     {
         System.out.println("Donner l'indice du spectacle a supprimer");
         int indice= sc.nextInt();
+        sc.nextLine();
         indice--;
         p.supprimerSpectacle(indice);
     }
@@ -113,6 +118,7 @@ public class Gestionnaire extends Utilisateur {
     public void ajouterDiffusion(Planning p){
         System.out.println("Donner l'id de la diffusion :");
         int id_diff= sc.nextInt();
+        sc.nextLine();
         System.out.println("Donner la date de la diffusion :");
         String date=sc.nextLine();
         System.out.println("Donner l'heure de debut :");
@@ -121,11 +127,12 @@ public class Gestionnaire extends Utilisateur {
         p.afficherSpectacle();
         System.out.println("Entrez le numero du spectacle :");
         int numspec= sc.nextInt();
-        Spectacle s=p.getSpectacle(numspec-1);
+        Spectacle s=p.getSpectacle(numspec);
         System.out.println("Choisir une salle : ");
+        p.afficherSalle();
         System.out.print("Entrez le numéro de la salle : ");
         int numSalle = sc.nextInt();
-        Salle salle = new Salle(numSalle, 100);
+        Salle salle = p.getSalle(numSalle);
         Diffusion nouvelleDiffusion = new Diffusion(id_diff, date, heureDebut, s, salle, p);
         p.ajoutdiff(nouvelleDiffusion);
         System.out.println("Diffusion ajoutée avec succès !");
