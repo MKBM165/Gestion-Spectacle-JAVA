@@ -13,12 +13,10 @@ public class Diffusion {
     private Billet[] billetsReserver = new Billet[200];
 
     public Diffusion(int idDiffusion, String dateDiff, String heureDebut, Spectacle idSpectacle, Salle idSalle,Planning p) {
-        //changer le format de la date
         DateTimeFormatter dateFormatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
         //convertion et affectatton d'un string au format date
         this.dateDiff = LocalDate.parse(dateDiff,dateFormatter);
         this.idDiffusion = idDiffusion;
-        //changer le format du temps
         DateTimeFormatter timeFormatter=DateTimeFormatter.ofPattern("HH:mm");
         //converstion et affectation d'un string au localtime
         this.heureDebut = LocalTime.parse(heureDebut,timeFormatter);
