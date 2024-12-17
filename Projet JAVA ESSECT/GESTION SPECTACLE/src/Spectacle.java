@@ -58,7 +58,7 @@ public class Spectacle {
 
     public void afficher(){
         System.out.println("--------- "+titre+" ---------");
-        System.out.println("Date à partir de : "+date+"--------- Duree : "+duree);
+        System.out.println("Date à partir de : "+date+"--------- Duree : "+duree+" min");
     }
 
     public void setDiffusions(Diffusion diff) {
@@ -70,6 +70,10 @@ public class Spectacle {
         int choix;
         System.out.println("0 : retour au menu principal");
         System.out.println("-----------Voi ci les Horaires de "+titre+"------------");
+        if (nbdiff==0){
+            System.out.println("Désolé pas de diffusion pour le moment");
+            return 0;
+        }
         for (int j = 0; j <nbdiff ; j++) {
             System.out.println((j+1)+ " : ");
             diffusions[j].afficher();

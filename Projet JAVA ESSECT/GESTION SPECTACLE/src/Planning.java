@@ -57,9 +57,14 @@ public class Planning {
             System.out.println("Planning saturée");
         }
     }
-    public void affichediffusion(){
+    public void afficherdiffusion(){
         for(int i=0;i<nbdiff;i++){
             diffusions[i].afficher();
+        }
+    }public void afficherDiffusionGestion(){
+        for(int i=0;i<nbdiff;i++){
+            System.out.println((i+1)+" : ");
+            diffusions[i].afficherGestion();
         }
     }
     public int affichespectacle(){
@@ -102,15 +107,15 @@ public class Planning {
     public void supprimerSpectacle(int indice){
         if(indice>=0 && indice<nbspec)
         {
-            for(int i=indice;i<nbspec;i++)
+            for(int i=indice;i<nbspec-1;i++)
             {
                 spectacles[i]=spectacles[i+1];
             }
-            spectacles[indice-1]=null;
+            spectacles[nbspec-1]=null;
             nbspec--;
-            System.out.println("Spectacle supprimé!");
+            System.out.println("Spectacle supprimé avec succès !");
         }
-        else System.out.println("Indice invalide");
+        else System.out.println("Indice invalide !");
     }
 
 }

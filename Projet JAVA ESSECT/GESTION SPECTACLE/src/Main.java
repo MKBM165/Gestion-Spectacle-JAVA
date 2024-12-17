@@ -3,8 +3,10 @@ import java.time.*;
 public class Main {
     public static void main(String[] args)
     {
+        //modifier l acces de client
         //problem dans affichage apreès l ajout dun spectacle
         Scanner input=new Scanner(System.in);
+        //après sc.nextInt() -> sc.nextline(); pour vider le champs
         int scenario = 0;
         //quand le scenario = 0 : afficher le menu principal(Log In)
         //quand le scenario = 1 : quitter le programme
@@ -13,10 +15,10 @@ public class Main {
         //base de donnes locale
         //declaration pour l authentification
 
-        Client c1=new Client("Client1","mdpclient1");
-        Client c2=new Client("Client2","mdpclient2");
-        Gestionnaire g1=new Gestionnaire("Gest1","Gestionnaire1");
-        Gestionnaire g2=new Gestionnaire("Gest2","Gestionnaire2");
+        Client c1=new Client("c1","mdpc1");
+        Client c2=new Client("c2","mdpc2");
+        Gestionnaire g1=new Gestionnaire("g1","mdpg1");
+        Gestionnaire g2=new Gestionnaire("g2","mdpg2");
         Utilisateur[] tutilisateurs = {c1,c2,g1,g2};
         String inputnom;
         String inputmdp;
@@ -45,10 +47,12 @@ public class Main {
             int authentifCount=1;
             do {
                 System.out.println("Trial "+authentifCount+" / 3" );
-                System.out.println("entrer le nom d'utilisateur : ");
+                System.out.println("*********************************");
+                System.out.println("--- entrer le nom d'utilisateur : ");
                 inputnom=input.nextLine();
-                System.out.println("entrer le mdp : ");
+                System.out.println("--- entrer le mdp : ");
                 inputmdp=input.nextLine();
+                System.out.println("*********************************");
                 authentifCount++;
             }while (authentification(tutilisateurs,inputnom,inputmdp)==null && authentifCount<=3);
             if (authentifCount>3){
@@ -57,22 +61,19 @@ public class Main {
 
             }
             else {
+                System.out.println("Connexion réussie");
                 Utilisateur user = authentification(tutilisateurs, inputnom, inputmdp);
                 if (user instanceof Client) {
                     Client c = (Client) user;
                     do {
 
                     switch (c.ChoixSpectacles()) {
+                        case 0 -> scenario = 1;
                         case 1 -> {
                             plan.affichespectacle();
                             scenario = 3;
                         }
-                        case 0 -> {
-                            scenario = 1;
-                        }
-                        case 2 -> {
-                            scenario = 0;
-                        }
+                        case 2 -> scenario = 0;
                     }
                     }while (scenario == 3);
                 }
@@ -82,29 +83,15 @@ public class Main {
                     do {
                         scenario=3;
                         switch (g.menugestionnarie()) {
-                            case 0 -> {
-                                scenario = 1;
-                            }
+                            case 0 -> scenario = 1;
                             case 1 -> g.ajoutspectacle(plan);
                             case 2 -> g.modifierSpectacle(plan);
                             case 3 -> plan.afficherSpectacle();
                             case 4 -> g.supprimerSpectacle(plan);
-                            case 5 -> plan.affichediffusion();
-                            case 6 -> {
-                                System.out.println("0 : Retourner");
-                                System.out.println("1 : Ajouter une diffusion");
-                                System.out.println("2 : Supprimer une diffusion");
-                                System.out.println("Entrez votre choix :");
-                                int choix = input.nextInt();
-                                {
-                                    if (choix == 1) {
-                                        g.ajouterDiffusion(plan);
-                                    } else if (choix == 2) {
-                                        g.supprimerDiffusion(plan);
-                                    }
-                                }
-                            }
-                            case 7 -> scenario = 0;
+                            case 5 -> plan.afficherdiffusion();
+                            case 6 -> g.ajouterDiffusion(plan);
+                            case 7 -> g.supprimerDiffusion(plan);
+                            case 8 -> scenario = 0;
                         }
                     }while (scenario == 3);
                 }

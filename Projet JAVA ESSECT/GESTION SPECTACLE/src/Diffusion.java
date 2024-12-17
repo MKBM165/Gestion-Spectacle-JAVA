@@ -62,7 +62,7 @@ public class Diffusion {
         }
         else
         {
-            System.out.println("Nous somme désolé le Film est complé ");
+            System.out.println("Nous sommes désolé le Film est complé ");
         }
     }
 
@@ -98,12 +98,19 @@ public class Diffusion {
         return billetsReserver.length;
     }
     public void afficher(){
-        //idSpectacle.afficher()
-        //idSalle.afficher()
         System.out.println("******************************************");
-        System.out.println("-------- le :"+dateDiff+"--------");
+        System.out.println("-------- le : "+dateDiff+" --------");
         System.out.println("Du : "+heureDebut+" jusqu'à : "+heureFin);
         System.out.println("Nbr de place : "+nbrBillets+" / "+nbrMaxBillets);
+        System.out.println("******************************************");
+    }
+    public void afficherGestion(){
+        System.out.println("******************************************");
+        System.out.println("-------- "+idSpectacle.getTitre()+" -------");
+        System.out.println("-------- le :"+dateDiff+" --------");
+        System.out.println("Du : "+heureDebut+" jusqu'à : "+heureFin);
+        System.out.println("Nbr de place : "+nbrBillets+" / "+nbrMaxBillets);
+        idSalle.afficher();
         System.out.println("******************************************");
     }
 }

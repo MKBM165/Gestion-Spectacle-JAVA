@@ -21,7 +21,6 @@ public class Gestionnaire extends Utilisateur {
         int duration=sc.nextInt();
         sc.nextLine();
         Spectacle c=new Spectacle(id,titre,date,type,duration,p);
-        p.ajoutspectacle(c);
         System.out.println("Spectacle ajouté!");
     }
 
@@ -35,9 +34,10 @@ public class Gestionnaire extends Utilisateur {
             System.out.println("3 : Afficher spectacles");
             System.out.println("4 : Supprimer un spectacle");
             System.out.println("5 : Afficher diffusion");
-            System.out.println("6 : Ajouter / supprimer diffusion");
-            System.out.println("7 : Retour au menu principal (Log In)");
-            System.out.print("Entrez votre choix : ");
+            System.out.println("6 : Ajouter  diffusion");
+            System.out.println("7 : Supprimer diffusion");
+            System.out.println("8 : Retour au menu principal (Log In)");
+            System.out.print("--- Entrez votre choix : ");
             choix= sc.nextInt();
         }while(choix>7 || choix<0);
         return choix;
@@ -56,9 +56,9 @@ public class Gestionnaire extends Utilisateur {
         System.out.println("Choisissez le spectacle à modifier :");
         p.afficherSpectacle();
 
-        System.out.print("Entrez le numéro du spectacle : ");
+        System.out.print("--- Entrez le numéro du spectacle : ");
         int indice = sc.nextInt();
-        sc.nextLine(); // Clear the buffer
+        sc.nextLine();
 
         if (indice> p.getNombreSpectacles()) {
             System.out.println("Numéro de spectacle invalide.");
@@ -66,53 +66,64 @@ public class Gestionnaire extends Utilisateur {
         }
 
         Spectacle spectacle = p.getSpectacle(indice - 1);
+        int choix=5;
+        do {
 
-        System.out.println("Quoi modifier dans le spectacle ?");
+        System.out.println("Choisir le type de modification ? ");
+        System.out.println("0 : Annuler");
         System.out.println("1 : Titre");
         System.out.println("2 : Type");
         System.out.println("3 : Durée");
         System.out.println("4 : Date");
-        System.out.print("Entrez votre choix : ");
-        int choix = sc.nextInt();
+        System.out.print("--- Entrez votre choix : ");
+        choix = sc.nextInt();
         sc.nextLine();
 
         switch (choix) {
             case 1 -> {
-                System.out.print("Donner le nouveau titre : ");
+                System.out.print("--- Donner le nouveau titre : ");
                 String newTitre = sc.nextLine();
                 modifiertitre(spectacle, newTitre);
                 System.out.println("Titre modifié avec succès !");
             }
             case 2 -> {
-                System.out.print("Donner le nouveau type : ");
+                System.out.print("--- Donner le nouveau type : ");
                 String newType = sc.nextLine();
                 modifiertype(spectacle, newType);
                 System.out.println("Type modifié avec succès !");
             }
             case 3 -> {
-                System.out.print("Donner la nouvelle durée : ");
+                System.out.print("--- Donner la nouvelle durée : ");
                 int newDuree = sc.nextInt();
                 sc.nextLine();
                 spectacle.setDuree(newDuree);
                 System.out.println("Durée modifiée avec succès !");
             }
             case 4 ->{
-                System.out.println("Donner la nouvelle Date");
+                System.out.println("--- Donner la nouvelle Date");
                 String newDate=sc.nextLine();
                 spectacle.setDate(newDate);
             }
             default -> System.out.println("Choix invalide.");
         }
-        p.afficherSpectacle(indice-1);
+        }while (choix <0 || choix > 4);
+        if (choix!=0)
+            p.afficherSpectacle(indice-1);
     }
 
     public void supprimerSpectacle(Planning p)
     {
-        System.out.println("Donner l'indice du spectacle a supprimer");
-        int indice= sc.nextInt();
+        int indice=-1;
+        do {
+
+        System.out.println("0 : Annuler");
+        p.afficherSpectacle();
+        System.out.println("--- Entrer l'indice du spectacle a supprimer");
+        indice= sc.nextInt();
         sc.nextLine();
-        indice--;
-        p.supprimerSpectacle(indice);
+        }while (indice < 0 || indice>p.getNombreSpectacles());
+        if (indice!=0)
+            p.supprimerSpectacle(indice-1);
     }
 
     public void ajouterDiffusion(Planning p){
@@ -134,7 +145,6 @@ public class Gestionnaire extends Utilisateur {
         int numSalle = sc.nextInt();
         Salle salle = p.getSalle(numSalle);
         Diffusion nouvelleDiffusion = new Diffusion(id_diff, date, heureDebut, s, salle, p);
-        p.ajoutdiff(nouvelleDiffusion);
         System.out.println("Diffusion ajoutée avec succès !");
 
 
@@ -143,7 +153,7 @@ public class Gestionnaire extends Utilisateur {
 
     public void supprimerDiffusion(Planning p) {
         System.out.println("Choisissez la diffusion à supprimer :");
-        p.affichediffusion();
+        p.afficherDiffusionGestion();
         System.out.print("Entrez le numéro de la diffusion : ");
         int indice = sc.nextInt();
         p.supprimerDiffusion(indice - 1);
