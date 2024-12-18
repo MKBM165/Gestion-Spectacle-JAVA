@@ -52,7 +52,7 @@ public class Diffusion {
             billetsReserver[nbrBillets]=billet;
             nbrBillets++;
                 System.out.println("Merci pour votre Achat Au revoir !");
-                System.out.println("Retour au menu Principal (Log In)..... ");
+                System.out.println("Retour au menu ..... ");
             return;
             }
             else {
