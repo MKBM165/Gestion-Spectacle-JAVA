@@ -88,7 +88,7 @@ public class Main {
                             case 2 -> g.modifierSpectacle(plan);
                             case 3 -> plan.afficherSpectacle();
                             case 4 -> g.supprimerSpectacle(plan);
-                            case 5 -> plan.afficherdiffusion();
+                            case 5 -> plan.afficherDiffusionGestion();
                             case 6 -> g.ajouterDiffusion(plan);
                             case 7 -> g.supprimerDiffusion(plan);
                             case 8 -> scenario = 0;
