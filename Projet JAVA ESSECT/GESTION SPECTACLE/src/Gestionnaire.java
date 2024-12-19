@@ -36,11 +36,19 @@ public class Gestionnaire extends Utilisateur {
             System.out.println("5 : Afficher diffusion");
             System.out.println("6 : Ajouter  diffusion");
             System.out.println("7 : Supprimer diffusion");
-            System.out.println("8 : Retour au menu principal (Log In)");
+            System.out.println("8 : Afficher le Total des Billets vendus");
+            System.out.println("9 : Retour au menu principal (Log In)");
             System.out.print("--- Entrez votre choix : ");
             choix= sc.nextInt();
-        }while(choix>7 || choix<0);
+        }while(choix>9 || choix<0);
         return choix;
+    }
+    public void totBilletsVendus(Planning p){
+        int totbillets =p.totbillets();
+        double totvente= totbillets*1000;
+        System.out.println("*********************************");
+        System.out.println("le Total des Billets Vendus est : "+totbillets);
+        System.out.printf("le  Total des Ventes est : %.2f DT\n",totvente);
     }
     public void modifiertitre(Spectacle c,String titre)
     {

@@ -94,8 +94,9 @@ public class Diffusion {
         return nbrMaxBillets;
     }
 
-    public int getBilletsReserver() {
-        return billetsReserver.length;
+    public int getnbrBilletsVendus() {
+
+        return nbrBillets;
     }
     public void afficher(){
         System.out.println("******************************************");

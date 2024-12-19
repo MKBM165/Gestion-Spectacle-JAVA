@@ -117,5 +117,12 @@ public class Planning {
         }
         else System.out.println("Indice invalide !");
     }
+    public int totbillets(){
+        int tot=0;
+        for (int i = 0; i < nbdiff; i++) {
+            tot+=diffusions[i].getnbrBilletsVendus();
+        }
+        return tot;
+    }
 
 }

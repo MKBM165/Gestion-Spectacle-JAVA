@@ -91,7 +91,8 @@ public class Main {
                             case 5 -> plan.afficherDiffusionGestion();
                             case 6 -> g.ajouterDiffusion(plan);
                             case 7 -> g.supprimerDiffusion(plan);
-                            case 8 -> scenario = 0;
+                            case 8 -> g.totBilletsVendus(plan);
+                            case 9 ->scenario = 0;
                         }
                     }while (scenario == 3);
                 }
